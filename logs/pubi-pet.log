@@ -1,0 +1,7 @@
+2025-04-19T00:27:24.642+08:00  WARN 7938 --- [PubiPet] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=44m36s369ms).
+2025-04-19T01:13:23.700+08:00  WARN 7938 --- [PubiPet] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m59s57ms).
+2025-04-19T01:31:23.987+08:00  INFO 7938 --- [PubiPet] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-19T01:31:24.072+08:00  INFO 7938 --- [PubiPet] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-04-19T01:31:24.102+08:00  INFO 7938 --- [PubiPet] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-19T01:31:24.157+08:00  INFO 7938 --- [PubiPet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-19T01:31:24.235+08:00  INFO 7938 --- [PubiPet] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
