@@ -14,10 +14,15 @@ import java.util.Map;
 public class JwtUtils {
 
 
-    @Value("${JWT_SECRET}")
     private static String jwtSecret;
+    private static Key key;
     private static final Long EXPIRATION_TIME = 43200000L; // 12 小時
-    private static final Key KEY = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+
+    @Value("${JWT_SECRET}")
+    public void setJwtSecret(String secret) {
+        jwtSecret = secret;
+        key = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
+    }
 
     // 產生 Token
     public static String generateJwt(Map<String, Object> claims) {
@@ -26,14 +31,14 @@ public class JwtUtils {
                 .addClaims(claims)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-                .signWith(KEY, SignatureAlgorithm.HS256)
+                .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
     }
 
     // 解析 Token
     public static Claims parseJwt(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(KEY)
+                .setSigningKey(key)
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
