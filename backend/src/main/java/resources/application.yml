@@ -1,0 +1,37 @@
+spring:
+  application.name: PubiPet
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}
+    username: ${DB_USER}
+    password: ${DB_PASS}
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      connection-timeout: 30000
+
+  profiles.active: dev
+
+  jpa:
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASS}
+    properties.mail.smtp.auth: true
+    properties.mail.smtp.starttls.enable: true
+
+server:
+  port: 8080
+
+logging:
+  level.org.hibernate.engine.jdbc.env.internal: DEBUG
+  file.name: /logs/pubi-pet.log
