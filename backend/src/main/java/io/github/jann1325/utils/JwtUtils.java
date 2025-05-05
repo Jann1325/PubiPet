@@ -2,6 +2,7 @@ package io.github.jann1325.utils;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -12,9 +13,11 @@ import java.util.Map;
 @Component
 public class JwtUtils {
 
-    private static final String SIGN_KEY = "thisIsASecureKeyForPubiPet-pubipet-pubipet";
+
+    @Value("${JWT_SECRET}")
+    private static String jwtSecret;
     private static final Long EXPIRATION_TIME = 43200000L; // 12 小時
-    private static final Key KEY = Keys.hmacShaKeyFor(SIGN_KEY.getBytes(StandardCharsets.UTF_8));
+    private static final Key KEY = Keys.hmacShaKeyFor(jwtSecret.getBytes(StandardCharsets.UTF_8));
 
     // 產生 Token
     public static String generateJwt(Map<String, Object> claims) {
