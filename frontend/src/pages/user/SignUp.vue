@@ -114,7 +114,7 @@ const handleRegister = async () => {
       birth
     });
 
-    if (response.code === 200) {
+    if (response.data.code === 200) {
       // 註冊成功後跳轉到登入頁
       router.push('/login');
     }

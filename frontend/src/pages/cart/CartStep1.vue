@@ -1,7 +1,10 @@
 <template>
   <div class="q-pa-lg q-mx-auto" style="max-width: 960px;">
+    <div v-if="isLoading" class="q-pa-md flex flex-center">
+      <q-spinner color="orange" size="40px" class="q-my-xl flex flex-center" />
+    </div>
     <!-- 空購物車 -->
-    <div v-if="cart.length === 0" class="q-my-xl text-center">
+    <div v-else-if="cart.length === 0" class="q-my-xl text-center">
       <div style="display: flex; justify-content: center;">
         <q-icon name="shopping_cart_off" size="64px" color="grey-5" />
       </div>
@@ -119,8 +122,11 @@ const initCart = async () => {
   await fetchProductDetails(mergedCartItems);
 };
 
+const isLoading = ref(false)
+
 // 取得購物車中商品的資料
 const fetchProductDetails = async (cartItems) => {
+  isLoading.value = true
   if (cartItems.length === 0) return
   const productIds = cartItems.map(item => item.productId);
   const res = (await api.get('/api/product/getCartProducts', {
@@ -136,6 +142,7 @@ const fetchProductDetails = async (cartItems) => {
   } else {
     $q.notify({ type: 'negative', message: `取得商品資料失敗：${res.message}` });
   }
+  isLoading.value = false
 };
 
 //監控商品選擇的狀態

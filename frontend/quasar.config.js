@@ -75,7 +75,9 @@ export default defineConfig((/* ctx */) => {
         // https: true,
       proxy: {
         '/api': {
-          target: process.env.VUE_APP_API_URL
+          target: process.env.VUE_APP_API_URL,
+          changeOrigin: true,
+          secure: false,
         }
       },
       open: true// opens browser window automatically

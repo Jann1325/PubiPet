@@ -100,7 +100,7 @@ async function handleLogin() {
   try {
     const response = await api.post('/api/auth/login', { email: email.value });
     const res = response.data;
-    if (res.data === 'NEED_REGISTER') {
+    if (res.message === 'NEED_REGISTER') {
       router.push({ path: '/signup', query: { email: email.value } })
     } else if (res.code === 1008) {
       $q.notify({ type: 'negative', message: res.message });

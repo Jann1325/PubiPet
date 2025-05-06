@@ -39,7 +39,7 @@ public class UserService {
             throw new ApiException(ErrorCode.EMAIL_ALREADY_EXISTS);
         }
         UserInfo user = new UserInfo();
-        BeanUtils.copyProperties(user, registerDTO);
+        BeanUtils.copyProperties(registerDTO, user);
         user.setCreatedTime(LocalDateTime.now());
         user.setUpdatedTime(LocalDateTime.now());
 
