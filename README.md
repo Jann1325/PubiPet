@@ -56,8 +56,8 @@ Before starting the backend, set the following environment variables:
 | `DB_PASS`         | MySQL password                 |
 | `JWT_SECRET`      | Secret key for JWT auth        |
 | `ALLOWED_ORIGIN`  | Frontend URL (for CORS)        |
-| `MAIL_USER`       | Sender email for login links   |
-| `MAIL_PASS`       | App password for the email     |
+| `EMAIL_USER`       | Sender email for login links   |
+| `EMAIL_PASS`       | App password for the email     |
 
 Once variables are set, run:
 ```
